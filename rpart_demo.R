@@ -30,7 +30,11 @@ tr_idx<-sample(nrow(newdata), nrow(newdata)*0.8)
 train<-newdata[tr_idx,]
 test<-newdata[-tr_idx,]
 
-tree<-rpart(factor(classes)~iyear+success+suicide+attacktype1+weaptype1+multiple+targtype1+region+country+targsubtype1+weapsubtype1+nwound+propextent,data=train)
+tree<-rpart(factor(classes)~eventid+iyear+imonth+iday+extended+country+region+specificity+vicinity+crit1+crit2+crit3+doubtterr+
+            multiple+success+suicide+attacktype1+targtype1+natlty1+guncertain1+individual+weaptype1+property+ishostkid+ransom+
+            INT_LOG+INT_IDEO+INT_MISC+INT_ANY+targsubtype1+weapsubtype1+nwound+propextent+alternative+attacktype2+attacktype3+
+            targtype2+targsubtype2+natlty2+targtype3+targsubtype3+natlty3+guncertain2+guncertain3+nperps+claimed+claimmode+claim2+
+            claimmode2+claim3+claimmode3+compclaim+weaptype2+weapsubtype2+weaptype3+weapsubtype3+weaptype4+weapsubtype4+nwoundte+
+            nhostkid+hostkidoutcome+ndays+nreleased,data=train)
 plot(tree)
 text(tree,cex=.8)
-
