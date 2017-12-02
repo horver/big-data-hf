@@ -30,6 +30,7 @@ tr_idx<-sample(nrow(newdata), nrow(newdata)*0.8)
 train<-newdata[tr_idx,]
 test<-newdata[-tr_idx,]
 
-tree<-rpart(factor(classes)~iyear+success+suicide+attacktype1+weaptype1+multiple+targtype1+region+country,data=train)
+tree<-rpart(factor(classes)~iyear+success+suicide+attacktype1+weaptype1+multiple+targtype1+region+country+targsubtype1+weapsubtype1+nwound+propextent,data=train)
 plot(tree)
 text(tree,cex=.8)
+
