@@ -1,6 +1,12 @@
 library("rpart")
+library("corrgram")
 
 data<-read.csv("E:/BME-MSc-2.felev/bigdata/Dropbox/data/globalterrorismdb_0617dist.csv", header = T, sep = ";", skipNul = T)
+
+vars2 <- c("iyear","imonth","iday","extended","country","region", "specificity","vicinity","multiple","success","suicide", 
+           "attacktype1", "targtype1", "natlty1", "guncertain1", "individual", "weaptype1", "nwound")
+round(cor(data[,vars2], use="pair"),2)
+corrgram(data[,vars2], order = T, lower.panel = panel.shade, upper.panel = panel.pie)
 
 # Itt adjuk hozzá az osztályozást az adatokhoz
 borders <- as.matrix(c(1,5,10,100))
